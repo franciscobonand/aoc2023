@@ -1,19 +1,19 @@
-day1-%:
-	@echo "Running day 1, file ${@:day1-%=%}"
-	@cd day1 && go run . ${@:day1-%=%}
+go.day1-%:
+	@echo "Running day 1, file ${@:go.day1-%=%}"
+	@cd go/day1 && go run . ${@:go.day1-%=%}
 
-day2-%:
-	@echo "Running day 2, file ${@:day2-%=%}"
-	@cd day2 && go run . ${@:day2-%=%}
+go.day2-%:
+	@echo "Running day 2, file ${@:go.day2-%=%}"
+	@cd go/day2 && go run . ${@:go.day2-%=%}
 	
-day3-%:
-	@echo "Running day 3, file ${@:day3-%=%}"
-	@cd day3 && go run . ${@:day3-%=%}
+go.day3-%:
+	@echo "Running day 3, file ${@:go.day3-%=%}"
+	@cd go/day3 && go run . ${@:go.day3-%=%}
 
-day4-%:
-	@echo "Running day 4, file ${@:day4-%=%}"
-	@cd day4 && go run . ${@:day4-%=%}
+go.day4-%:
+	@echo "Running day 4, file ${@:go.day4-%=%}"
+	@cd go/day4 && go run . ${@:go.day4-%=%}
 
-day5-%:
-	@echo "Running day 5, file ${@:day5-%=%}"
-	@cd day5 && go run . ${@:day5-%=%}
+go.day5-%:
+	@echo "Running day 5, file ${@:go.day5-%=%}"
+	@cd go/day5 && go run . ${@:go.day5-%=%}
