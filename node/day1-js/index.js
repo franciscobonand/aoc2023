@@ -1,4 +1,4 @@
-import readline from 'readline';
+import fs from 'fs';
 
 function extractCalibrationValues(input) {
     const lines = input.split('\n');
@@ -6,45 +6,30 @@ function extractCalibrationValues(input) {
 
     lines.forEach(line => {
         const digits = line.match(/\d/g);
+
         if (digits && digits.length >= 2) {
             const calibrationValue = parseInt(digits[0] + digits[digits.length - 1]);
             sum += calibrationValue;
-        }
-        if (digits && digits.length == 1) {
-            const calibrationValueUnique = parseInt(digits + digits);
-            sum += calibrationValueUnique;
+        } else if (digits && digits.length >= 1) {
+            const calibrationValue = parseInt(digits.join('') + digits.join(''));
+            sum += calibrationValue;
         }
     });
 
     return sum;
 }
 
-function readInput() {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-
-    let userInput = '';
-
-    return new Promise(resolve => {
-        console.log("Enter multiple lines of text. Press Enter on an empty line to finish.");
-
-        rl.on('line', line => {
-            if (line.trim() === '') {
-                rl.close();
-                resolve(userInput);
-            } else {
-                userInput += line + '\n';
-            }
-        });
-    });
+function readFile(filePath) {
+    try {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        return fileContent;
+    } catch (error) {
+        console.error('Error reading the file:', error.message);
+        process.exit(1);
+    }
 }
 
-async function main() {
-    const userInput = await readInput();
-    const totalCalibration = extractCalibrationValues(userInput.trim());
-    console.log('Total Calibration:', totalCalibration);
-}
-
-main();
+const filePath = './input.txt'; 
+const fileContent = readFile(filePath);
+const totalCalibration = extractCalibrationValues(fileContent.trim());
+console.log('Total Calibration:', totalCalibration);
