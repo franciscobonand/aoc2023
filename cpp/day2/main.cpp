@@ -27,6 +27,9 @@ int main(int argc, char* argv[])
     std::cout << "greenMax : " << greenMax << std::endl;
     std::cout << "blueMax : " << blueMax << std::endl;
     GameQuestionRGB request{redMax, greenMax, blueMax};
-    std::cout << "Answer : " << elfSack.sumOfPossibleGameIds(request) << std::endl;
+    std::cout << "Answer Part 1: " << elfSack.sumOfPossibleGameIds(request) << std::endl;
+    // I could have made the answer for part 2 in the previous API, however since performance is not an issue
+    // I will just loop through my DS one more time
+    std::cout << "Answer Part 2: " << elfSack.sumPowerOfCubes() << std::endl;
     return 0;
 }

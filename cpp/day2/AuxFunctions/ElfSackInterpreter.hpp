@@ -25,7 +25,8 @@ class ElfSackInterpreter
         ElfSackInterpreter(const std::string& fileName);
         // API to get the sum of possible games ids
         int sumOfPossibleGameIds(GameQuestionRGB bagConfiguration);
-
+        // API to get the sum of the power of the cubes per game
+        int sumPowerOfCubes();
     private:
         // Auxiliary API to get the max value of the color that appeared in the game
         ColorMax getMaxGameValueForColor(GameId id, CubeColors color)

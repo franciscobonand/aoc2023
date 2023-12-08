@@ -53,3 +53,13 @@ int ElfSackInterpreter::sumOfPossibleGameIds(GameQuestionRGB bagConfiguration)
     }
     return accum;
 }
+
+int ElfSackInterpreter::sumPowerOfCubes()
+{
+    int accum = 0;
+    for (auto& [gameId, colorMap] : m_gameIdToColorsMax)
+    {
+        accum += colorMap[CubeColors::Red] * colorMap[CubeColors::Green] * colorMap[CubeColors::Blue];
+    }
+    return accum;
+}
