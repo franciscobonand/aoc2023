@@ -21,3 +21,7 @@ go.day5-%:
 go.day6-%:
 	@echo "Running day 6, file ${@:go.day6-%=%}"
 	@cd go/day6 && go run . ${@:go.day6-%=%}
+
+go.day7-%:
+	@echo "Running day 7, file ${@:go.day7-%=%}"
+	@cd go/day7 && go run . ${@:go.day7-%=%}
