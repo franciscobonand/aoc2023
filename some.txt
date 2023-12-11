@@ -1,0 +1,12 @@
+Running day 10, file sample
+[O F - - - - 7 F 7 F 7 F 7 F - 7 O O O O]
+[O | F - - 7 | | | | | | | | F J O O O O]
+[O | |  F J | | | | | | | | L 7 O O O O]
+[F J L 7 L 7 L J L J | | L J O L - 7 O O]
+[L - - J O L 7 O O  L J S 7 F - 7 L 7 O]
+[O O O O F - J O  F 7 F J | L 7 L 7 L 7]
+[O O O O L 7  F 7 | | L 7 | O L 7 L 7 |]
+[O O O O O | F J L J | F J | F 7 | O L J]
+[O O O O F J L - 7 O | | O | | | | O O O]
+[O O O O L - - - J O L J O L J L J O O O]
+70
