@@ -4,8 +4,8 @@ defmodule Solution do
   end
 end
 
-File.stream!("input.txt")
+File.stream!("sample.txt")
 |> Stream.map(&String.trim/1)
 |> Stream.map(&Solution.foo/1)
 |> Enum.to_list()
-|> IO.inspect()
+|> IO.inspect(charlists: :as_lists)
