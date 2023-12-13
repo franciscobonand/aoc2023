@@ -17,22 +17,17 @@ defmodule Solution do
 
     jokers_count = mapped_hand["J"]
 
-    with_joker =
-      mapped_hand
-      |> Map.drop(["J"])
-      |> Map.values()
-      |> Enum.sort(:desc)
-      |> List.update_at(0, fn value ->
-        if is_nil(jokers_count) do
-          value
-        else
-          value + jokers_count
-        end
-      end)
-
-    # IO.inspect(with_joker, charlists: :as_lists)
-
-    with_joker
+    mapped_hand
+    |> Map.drop(["J"])
+    |> Map.values()
+    |> Enum.sort(:desc)
+    |> List.update_at(0, fn value ->
+      if is_nil(jokers_count) do
+        value
+      else
+        value + jokers_count
+      end
+    end)
     |> then(fn sorted_values ->
       case sorted_values do
         [5] -> :five
