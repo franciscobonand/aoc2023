@@ -36,7 +36,14 @@ func getSolutions(f *os.File) int {
 			v, _ := strconv.Atoi(s)
 			dmgLocations = append(dmgLocations, v)
 		}
-		totalArrangements += buildArrangements(springs, dmgLocations)
+		pt2DmgLoc := []int{}
+		pt2Springs := ""
+		for i := 0; i < 5; i++ {
+			pt2DmgLoc = append(pt2DmgLoc, dmgLocations...)
+			pt2Springs += springs + "?"
+		}
+
+		totalArrangements += buildArrangements(pt2Springs[:len(pt2Springs)-1], pt2DmgLoc)
 	}
 	return totalArrangements
 }
