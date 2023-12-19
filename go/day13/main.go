@@ -35,10 +35,10 @@ func getSolutions(f *os.File) int {
 		line := scanner.Text()
 		if len(line) == 0 {
 			rows, cols := getRowsAndColsValues(patterns)
-			if v := getReflectionValue(rows); v > 0 {
+			if v := getReflectionValue(rows, len(cols)); v > 0 {
 				reflectionSummary += (v * 100)
 			} else {
-				reflectionSummary += (getReflectionValue(cols))
+				reflectionSummary += (getReflectionValue(cols, len(rows)))
 			}
 			patterns = nil
 			continue
@@ -46,17 +46,17 @@ func getSolutions(f *os.File) int {
 		patterns = append(patterns, line)
 	}
 	rows, cols := getRowsAndColsValues(patterns)
-	if v := getReflectionValue(rows); v > 0 {
+	if v := getReflectionValue(rows, len(cols)); v > 0 {
 		reflectionSummary += (v * 100)
 	} else {
-		reflectionSummary += (getReflectionValue(cols))
+		reflectionSummary += (getReflectionValue(cols, len(rows)))
 	}
 	return reflectionSummary
 }
 
-func getReflectionValue(vals []int) int {
+func getReflectionValue(vals []int, size int) int {
 	for i := 0; i < len(vals)-1; i++ {
-		if isReflection(vals, i, i+1) {
+		if !isReflection(vals, i, i+1) && canBeReflection(vals, i, i+1, size) {
 			return (i + 1)
 		}
 	}
@@ -83,4 +83,25 @@ func getRowsAndColsValues(pattern []string) ([]int, []int) {
 		}
 	}
 	return rows, cols
+}
+
+func canBeReflection(cnts []int, l, r, size int) bool {
+	for l >= 0 && r < len(cnts) && (cnts[l] == cnts[r] || isDiffByOne(cnts[l], cnts[r], size)) {
+		l--
+		r++
+	}
+	return l < 0 || r == len(cnts)
+}
+
+func isDiffByOne(n1, n2 int, size int) bool {
+	if n1 > n2 {
+		n1, n2 = n2, n1
+	}
+	for i := 0; i < size; i++ {
+		diff := 1 << i
+		if (n1 | diff) == n2 {
+			return true
+		}
+	}
+	return false
 }
